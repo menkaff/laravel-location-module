@@ -10,6 +10,6 @@ class Province extends Model
      *
      * @var string
      */
-    protected $table = 'location_provinces';
+    protected $table = 'location_province';
 
 }

@@ -10,7 +10,7 @@ class City extends Model
      *
      * @var string
      */
-    protected $table = 'location_cities';
+    protected $table = 'location_city';
     public function province()
     {
         return $this->belongsTo('Modules\Location\Models\Province');
