@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -11,8 +9,14 @@ use Illuminate\Http\Request;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
-Route::middleware('auth:api')->get('/location', function (Request $request) {
-    return $request->user();
+Route::group([
+    'prefix' => 'location/v1',
+    'middleware' => ['auth.api_public'],
+], function ($api) {
+
+    Route::get('/province', 'LocationController@province_index');
+    Route::get('/city', 'LocationController@city_index');
+
 });
