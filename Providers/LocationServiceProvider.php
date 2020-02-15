@@ -2,8 +2,8 @@
 
 namespace Modules\Location\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\ServiceProvider;
 
 class LocationServiceProvider extends ServiceProvider
 {
@@ -26,6 +26,10 @@ class LocationServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+        $this->commands([
+            \Modules\Location\Console\DoSQLLocation::class,
+        ]);
     }
 
     /**
@@ -46,10 +50,10 @@ class LocationServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('location.php'),
+            __DIR__ . '/../Config/config.php' => config_path('location.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'location'
+            __DIR__ . '/../Config/config.php', 'location'
         );
     }
 
@@ -62,11 +66,11 @@ class LocationServiceProvider extends ServiceProvider
     {
         $viewPath = resource_path('views/modules/location');
 
-        $sourcePath = __DIR__.'/../Resources/views';
+        $sourcePath = __DIR__ . '/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ],'views');
+            $sourcePath => $viewPath,
+        ], 'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/location';
@@ -85,18 +89,18 @@ class LocationServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'location');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'location');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'location');
         }
     }
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()
     {
-        if (! app()->environment('production')) {
+        if (!app()->environment('production')) {
             app(Factory::class)->load(__DIR__ . '/../Database/factories');
         }
     }
