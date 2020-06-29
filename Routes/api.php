@@ -16,7 +16,7 @@ Route::group([
     'middleware' => ['auth.api_public'],
 ], function ($api) {
 
-    Route::get('/province', 'LocationController@province_index');
-    Route::get('/city', 'LocationController@city_index');
+    Route::get('/province', 'API\ProvinceController@Index');
+    Route::get('/city', 'API\CityController@Index');
 
 });

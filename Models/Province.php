@@ -12,4 +12,9 @@ class Province extends Model
      */
     protected $table = 'location_province';
 
+    public function city()
+    {
+        return $this->hasMany('Modules\Location\Models\City','province_id');
+    }
+
 }
