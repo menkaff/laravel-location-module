@@ -13,10 +13,8 @@
 
 Route::group([
     'prefix' => 'location/v1',
-    'middleware' => ['auth.api_public'],
 ], function ($api) {
 
     Route::get('/province', 'API\ProvinceController@Index');
     Route::get('/city', 'API\CityController@Index');
-
 });
