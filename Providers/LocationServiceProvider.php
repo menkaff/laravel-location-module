@@ -2,7 +2,6 @@
 
 namespace Modules\Location\Providers;
 
-use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider;
 
 class LocationServiceProvider extends ServiceProvider
@@ -25,7 +24,6 @@ class LocationServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
-
         $this->commands([
             \Modules\Location\Console\DoSQLLocation::class,
         ]);
@@ -90,18 +88,6 @@ class LocationServiceProvider extends ServiceProvider
             $this->loadTranslationsFrom($langPath, 'location');
         } else {
             $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'location');
-        }
-    }
-
-    /**
-     * Register an additional directory of factories.
-     *
-     * @return void
-     */
-    public function registerFactories()
-    {
-        if (!app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
         }
     }
 
