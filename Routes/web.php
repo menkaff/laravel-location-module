@@ -11,7 +11,7 @@
 |
  */
 
-Route::group(['prefix' => 'location', 'middleware' => 'auth.web_public'], function () {
+Route::group(['prefix' => 'location'], function () {
     Route::get('/provinces', 'WEB\ProvinceController@Index');
     Route::get('/province', 'WEB\ProvinceController@Index');
 
