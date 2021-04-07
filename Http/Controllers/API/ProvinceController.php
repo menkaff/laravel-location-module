@@ -14,7 +14,7 @@ use Modules\Location\Service\ProvinceService;
 class ProvinceController extends Controller
 {
     /**
-     * City Index
+     * Province Index
      * @urlParam city_id . Example:1
      */
     public function Index(Request $request)
