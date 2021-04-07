@@ -10,11 +10,3 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-Route::group(['prefix' => 'location'], function () {
-    Route::get('/provinces', 'WEB\ProvinceController@Index');
-    Route::get('/province', 'WEB\ProvinceController@Index');
-
-    Route::get('/cities', 'WEB\CityController@Index');
-    Route::get('/city', 'WEB\CityController@Index');
-});
